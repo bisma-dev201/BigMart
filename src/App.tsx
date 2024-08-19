@@ -11,11 +11,17 @@ const App: React.FC = () => {
       setSelectedCategory(category);
   };
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (query: string) => {
+      setSearchQuery(query);
+  };
+
   return (
     <>
       <CartProvider>
-      <Navbar onCategoryChange={handleCategoryChange} />
-      <MainData selectedCategory={selectedCategory} />
+      <Navbar onCategoryChange={handleCategoryChange} searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+      <MainData selectedCategory={selectedCategory} searchQuery={searchQuery} />
       </CartProvider>
     </>
   )
